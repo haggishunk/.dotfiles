@@ -33,11 +33,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-exe "set rtp+=" . expand(g:conf_dir . "bundle/Vundle.vim")
+exe "set rtp+=" . expand(g:conf_dir . "bundle/Vundle")
 call vundle#begin(g:conf_dir . "plugins")
 
 " plugin list starts with vundle itself
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle'
 Plugin 'Konfekt/FastFold'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
