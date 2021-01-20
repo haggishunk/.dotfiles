@@ -1,0 +1,29 @@
+# set color defs
+COL0="\[\033[00m\]"    #WHITE (15)
+COL1="\[\033[01;32m\]" #GRN (10)
+COL2="\[\033[01;34m\]" #BLUE (9)
+COL3="\[\033[01;31m\]" #RED (12)
+COL4="\[\033[01;36m\]" #LT BLUE (11)
+COL5="\[\033[01;33m\]" #YELLOW (14)
+COL6="\[\033[01;35m\]" #LAVENDER (13)
+COL7="\[\033[01;30m\]" #DK GRAY (8)
+
+# pick a prompt character
+SYMB=$'\uf1d8'
+
+#DIV=""
+#GRN="\033[38;5;34m"
+#GRN_BK="\033[48;5;34m"
+#PRP="\033[38;5;93m"
+#PRP_BK="\033[48;5;93m"
+#LTGRY="\033[38;5;7m"
+#DKGRY="\033[38;5;0m"
+#RST="\e[0m"
+#PS1="$LTGRY$PRP_BK\u@\h:\w $RST$PRP$DIV$RST"
+PURPonBLK='\[\e[1;38;5;92;48;5;0m\]'
+BLKonPURP='\[\e[1;38;5;0;48;5;92m\]'
+
+# set the command prompt
+if [[ -n $(ps -C xinit | sed '/PID/d') ]]; then
+    PS1="[${COL1}\u@\h${COL0}:${COL2}\w${COL0}][${COL1}\t${COL0}]${COL3}\$(py-virtualenv)${COL6}\$(git-branch)${COL4}\$(kube-context)${COL5}\$(terraform-workspace)\n${COL0}${SYMB} "
+fi
