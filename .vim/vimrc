@@ -66,6 +66,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 " Plugin 'juliosueiras/vim-terraform-completion'
 
 call vundle#end()            " required
@@ -220,6 +221,10 @@ set smarttab
 set smartindent
 set autoindent
 filetype plugin indent on
+" }}}
+
+" {{{ Linting
+let g:ale_fix_on_save = 1
 " }}}
 
 " Terraform {{{
