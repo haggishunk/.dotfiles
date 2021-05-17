@@ -1,7 +1,7 @@
 fish_vi_key_bindings
 
 # spacefish
-set -gx SPACEFISH_PROMPT_ORDER time user dir host git venv package rust node docker golang aws kubecontext line_sep battery char
+set -gx SPACEFISH_PROMPT_ORDER time user dir host git venv rust node docker golang aws kubecontext line_sep battery char
 set -gx SPACEFISH_GIT_SYMBOL ' '
 set -gx SPACEFISH_VENV_SYMBOL ' '
 set -gx SPACEFISH_VENV_SHOW true
@@ -13,6 +13,7 @@ set -gx SPACEFISH_GOLANG_SYMBOL ' '
 set -gx SPACEFISH_RUST_SYMBOL ' '
 set -gx SPACEFISH_CHAR_SYMBOL 
 set -gx SPACEFISH_AWS_SYMBOL ' '
+set -gx SPACEFISH_NODE_SHOW true
 
 eval (direnv hook fish)
 
