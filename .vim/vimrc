@@ -164,12 +164,12 @@ let g:lightline={
             \ 'colorscheme': 'darcula',
             \ 'active': {
             \   'left': [
-            \     ['mode', 'paste'], 
+            \     ['mode', 'paste'],
             \     ['readonly', 'filename', 'modified', 'gitstatus']
             \   ],
             \   'right': [
-            \     ['lineinfo'], 
-            \     ['percent'], 
+            \     ['lineinfo'],
+            \     ['percent'],
             \     ['fileformat', 'fileencoding', 'filetype']]
             \ },
             \ 'component': {
@@ -237,7 +237,7 @@ let g:ale_fixers={
     \ ],
     \ 'rust': [
     \ 'rustfmt'
-    \],
+    \ ],
     \ }
 " }}}
 
@@ -269,11 +269,11 @@ augroup encrypted
 	  \ execute "doautocmd BufReadPost " . expand("%:r")
 	" set binary format and encrypt before writing
 	autocmd BufWritePre,FileWritePre *.gpg
-	  \ setlocal bin | 
+	  \ setlocal bin |
 	  \ '[,']!gpg --encrypt --default-recipient-self
     " undo encryption and set non-binary format after writing
 	autocmd BufWritePost,FileWritePost *.gpg
-	  \ silent u | 
+	  \ silent u |
 	  \ setlocal nobin
 augroup end
 " }}}
