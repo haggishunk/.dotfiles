@@ -38,6 +38,7 @@ call vundle#begin(g:conf_dir . "plugins")
 
 " plugin list starts with vundle itself
 Plugin 'VundleVim/Vundle.vim'
+Plugin '907th/vim-auto-save'
 Plugin 'Konfekt/FastFold'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
@@ -45,6 +46,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'cespare/vim-toml'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'dkprice/vim-easygrep'
+Plugin 'tpope/vim-obsession'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
@@ -121,7 +124,7 @@ let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_key_list_stop_completion=['<C-y>']
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>yg  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }}}
 
 " Snippets {{{
@@ -132,18 +135,20 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
 
-" Autosave {{{
-let g:autosave_timer=15000
-" }}}
-
 " Timings {{{
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=2000 ttimeoutlen=100
 " }}}
 
 " Mappings _ Core {{{
 let mapleader=","
 exe "nnoremap <leader>s :source " . g:conf_dir . g:conf_file . "<CR>"
 nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>w- :set nowrap<CR>
+nnoremap <leader>w= :set wrap<CR>
+" }}}
+
+" Mappings _ Git {{{
+nnoremap <leader>gm :Git pull origin master<CR>
 " }}}
 
 " Navigation {{{
@@ -151,6 +156,7 @@ let NERDTreeWinSize=35
 let NERDTreeIgnore=['\.pyc$', '^__pycache__$']
 let NERDTreeDirArrowExpandable=""
 let NERDTreeDirArrowCollapsible=""
+nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nh :NERDTreeFocus<CR>
 nnoremap <C-J> <C-W><C-J>
@@ -165,7 +171,7 @@ let g:lightline={
             \ 'active': {
             \   'left': [
             \     ['mode', 'paste'],
-            \     ['readonly', 'filename', 'modified', 'gitstatus']
+            \     ['readonly', 'filename', 'modified', 'obsession', 'gitstatus']
             \   ],
             \   'right': [
             \     ['lineinfo'],
@@ -173,6 +179,7 @@ let g:lightline={
             \     ['fileformat', 'fileencoding', 'filetype']]
             \ },
             \ 'component': {
+            \   'obsession': '%{ObsessionStatus()}',
             \   'gitstatus': '%{FugitiveStatusline()}'
             \ },
             \ 'separator': { 'left': '', 'right': '' },
@@ -203,7 +210,8 @@ let g:ycm_global_ycm_extra_conf='~/.config/python/global_extra_conf.py'
 " }}}
 
 " Filetypes {{{
-autocmd BufRead,BufNewFile *.libjsonnet set filetype=javascript
+" write these under $VIMRUNTIME/ftdetect/
+" autocmd BufRead,BufNewFile *.libjsonnet set filetype=javascript
 " }}}
 
 " Search {{{
