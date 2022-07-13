@@ -24,5 +24,3 @@ end
 if test -f ~/.config/fish/local.fish
     source ~/.config/fish/local.fish
 end
-
-source ~/.virtualenvs/py3/bin/activate.fish
