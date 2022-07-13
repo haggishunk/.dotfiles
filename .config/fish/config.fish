@@ -1,6 +1,6 @@
 fish_vi_key_bindings
 
-# spacefish
+# spacefish (deprecated -- shift these to corresponding starship settings)
 set -gx SPACEFISH_PROMPT_ORDER time user dir host git venv rust node docker golang aws kubecontext line_sep battery char
 set -gx SPACEFISH_GIT_SYMBOL ' '
 set -gx SPACEFISH_VENV_SYMBOL ' '
@@ -15,7 +15,7 @@ set -gx SPACEFISH_CHAR_SYMBOL 
 set -gx SPACEFISH_AWS_SYMBOL ' '
 set -gx SPACEFISH_NODE_SHOW true
 
-eval (direnv hook fish)
+starship init fish | source
 
 if test -f ~/.config/fish/env.fish
     source ~/.config/fish/env.fish
