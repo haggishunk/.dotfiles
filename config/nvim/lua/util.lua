@@ -58,11 +58,13 @@ end
 
 function FindYamllintConfig(root_dir)
   root_dir = root_dir or vim.fn.getcwd()
+  -- print('Looking for yamllint in ' .. root_dir)
   local filenames = {'.yamllint', '.yamllint.yaml', '.yamllint.yml'}
 
   for _, filename in ipairs(filenames) do
     filepath = root_dir .. '/' .. filename
     if vim.fn.filereadable(filepath) == 1 then
+      -- print('Found yamllint ' .. filepath)
       return filepath
     end
   end
@@ -82,11 +84,13 @@ end
 
 function FindYamlfmtConfig(root_dir)
   root_dir = root_dir or vim.fn.getcwd()
+  -- print('Looking for yamlfmt in ' .. root_dir)
   local filenames = {'.yamlfmt'}
 
   for _, filename in ipairs(filenames) do
     filepath = root_dir .. '/' .. filename
     if vim.fn.filereadable(filepath) == 1 then
+      -- print('Found yamlfmt ' .. filepath)
       return filepath
     end
   end
