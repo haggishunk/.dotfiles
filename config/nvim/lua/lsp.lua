@@ -270,6 +270,13 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
   end,
 })
 
+-- typescript
+---------
+lspconfig.tsserver.setup{
+  capabilities = capabilities,
+}
+
+
 -- elixir
 ---------
 lspconfig.elixirls.setup{
