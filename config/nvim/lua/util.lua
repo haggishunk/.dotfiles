@@ -72,8 +72,8 @@ function FindYamllintConfig(root_dir)
   return nil
 end
 
-function MakeYamllintOptions()
-  local git_root = FindGitRootDir(0)
+function MakeYamllintOptions(bufnr)
+  local git_root = FindGitRootDir(bufnr)
   options = ''
   local config = FindYamllintConfig(git_root)
   if config then
@@ -98,8 +98,8 @@ function FindYamlfmtConfig(root_dir)
   return nil
 end
 
-function MakeYamlfmtOptions()
-  local git_root = FindGitRootDir(0)
+function MakeYamlfmtOptions(bufnr)
+  local git_root = FindGitRootDir(bufnr)
   options = ''
   local config = FindYamlfmtConfig(git_root)
   if config then
