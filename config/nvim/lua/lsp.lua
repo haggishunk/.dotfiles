@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       util.key_mapper('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
       util.key_mapper('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
       util.key_mapper('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-      util.key_mapper('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+      util.key_mapper('n', '<leader>lf', '<cmd>lua vim.lsp.buf.format({async=true})<CR>')
     end
     if client.supports_method('textDocument/rename') then
       util.key_mapper('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
@@ -148,6 +148,7 @@ lspconfig.pylsp.setup{
   on_attach = on_attach_pylsp,
   settings = {
     pylsp = {
+      cmd = {"pylsp", "-vvv"},
       plugins = {
         autopep8 = {
           enabled = false
@@ -187,11 +188,19 @@ lspconfig.pylsp.setup{
         pylint = {
           enabled = true,
         },
+        pylsp_black = {
+          enabled = false,
+        },
         pylsp_mypy = {
           enabled = false,
         },
-        yapf = {
+        -- https://github.com/python-lsp/python-lsp-ruff?tab=readme-ov-file#configuration
+        ruff = {
           enabled = true,
+          formatEnabled = true,
+        },
+        yapf = {
+          enabled = false,
           based_on_style = 'pep8',
           spaces_before_comment = '4'
         },
