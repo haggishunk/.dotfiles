@@ -24,10 +24,10 @@ util.key_mapper('n', '<leader>w-', ':set nowrap<CR>')
 util.key_mapper('n', '<leader>w=', ':set wrap<CR>')
 util.key_mapper('n', '<leader>oo', ':only<CR>')
 util.key_mapper('n', '<leader>=', ':wincmd =<CR>')
-util.key_mapper('n', '<leader>ff', ':Telescope find_files <CR>', {})
-util.key_mapper('n', '<leader>fg', ':Telescope live_grep <CR>', {})
-util.key_mapper('n', '<leader>fb', ':Telescope buffers <CR>', {})
-util.key_mapper('n', '<leader>fh', ':Telescope help_tags <CR>', {})
+util.key_mapper('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>', {})
+util.key_mapper('n', '<leader>fg', ':lua require("telescope.builtin").live_grep()<CR>', {})
+util.key_mapper('n', '<leader>fb', ':lua require("telescope.builtin").buffers({sort_mru = true, sort_lastused = true})<CR>', {})
+util.key_mapper('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>', {})
 
 -- NERDTree
 vim.g.NERDTreeWinSize=35
