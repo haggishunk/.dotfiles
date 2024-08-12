@@ -29,6 +29,9 @@ util.key_mapper('n', '<leader>fg', ':lua require("telescope.builtin").live_grep(
 util.key_mapper('n', '<leader>fb', ':lua require("telescope.builtin").buffers({sort_mru = true, sort_lastused = true})<CR>', {})
 util.key_mapper('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>', {})
 
+-- Kustomize
+util.key_mapper('n', '<leader>kb', ':!kustomize build %:p:h<CR>')
+
 -- NERDTree
 vim.g.NERDTreeWinSize=35
 vim.g.NERDTreeAutoCenter=1
