@@ -108,6 +108,22 @@ function MakeYamlfmtOptions(bufnr)
   return options
 end
 
+function GitRepoHasPrettierrc(bufnr)
+  local git_root = FindGitRootDir(bufnr)
+  if not git_root then
+    print("No git root")
+    return false
+  end
+  local prettier_config_path = git_root .. "/.prettierrc"
+  if uv.fs_stat(prettier_config_path) then
+    print("Found .prettierrc")
+    return true
+  else
+    print("No .prettierrc")
+    return false
+  end
+end
+
 -- under development
 -- -----------------
 -- Function to check if a file exists
