@@ -28,6 +28,7 @@ util.key_mapper('n', '<leader>ff', ':lua require("telescope.builtin").find_files
 util.key_mapper('n', '<leader>fg', ':lua require("telescope.builtin").live_grep()<CR>', {})
 util.key_mapper('n', '<leader>fb', ':lua require("telescope.builtin").buffers({sort_mru = true, sort_lastused = true})<CR>', {})
 util.key_mapper('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>', {})
+util.key_mapper('n', '<leader>ft', ':lua require("telescope.builtin").tags()<CR>', {})
 
 -- Kustomize
 util.key_mapper('n', '<leader>kb', ':!kustomize build %:p:h<CR>')
