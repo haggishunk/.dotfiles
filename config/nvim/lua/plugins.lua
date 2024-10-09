@@ -31,6 +31,7 @@ return require('packer').startup(function()
     config = function() require('autosave').setup{} end,
   })
   use 'Konfekt/FastFold'
+  use 'NoahTheDuke/vim-just'
   use 'andymass/vim-matchup'
   use 'bkegley/gloombuddy'
   use 'cappyzawa/starlark.vim'
