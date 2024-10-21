@@ -14,7 +14,8 @@
     # fonts
     $uiFont Hack Nerd Font Mono
     $nerdish Nerd Font Mono
-    $statusFont ShureTechMono Nerd Font Mono
+    # $statusFont ShureTechMono Nerd Font Mono
+    $statusFont Share Tech Mono
     # styles
     $text #e4e4e4
     $inactiveText #808080
@@ -29,6 +30,7 @@
     # application launcher
     $menu bemenu-run \
       --fn "$statusFont 28" \
+      --auto-select \
       --ignorecase \
       --list 3 \
       --hp 50 \
@@ -63,7 +65,7 @@
   # # -R is recommended for swaynag_command so that, upon a syntax error in your sway config, the
   #   # 'Reload Sway' option will be initially selected instead of the 'Exit Sway' option
   title_align center
-  font pango:$statusFont 20
+  font pango:$uiFont 20
   gaps inner 5
   swaynag_command $nag -R
   client.focused $hiBackground $hiBackground $hideout $supaHighlight
@@ -103,6 +105,8 @@
 #
   # Start a terminal
   bindsym $mod+Return exec $term
+  bindsym $mod+shift+Return exec $term $SHELL -c "tmuxinator start sanctum"
+  bindsym $mod+ctrl+Return exec $term $SHELL -c "tmuxinator start system"
 
   # Kill focused window
   bindsym $mod+q kill
