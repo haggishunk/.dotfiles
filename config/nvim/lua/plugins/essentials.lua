@@ -4,7 +4,7 @@ return {
   "andymass/vim-matchup",
   "cappyzawa/starlark.vim",
   "dag/vim-fish",
-  "github/copilot.vim",
+  -- "github/copilot.vim",
   "glench/vim-jinja2-syntax",
   "google/vim-jsonnet",
   "grafana/vim-alloy",
