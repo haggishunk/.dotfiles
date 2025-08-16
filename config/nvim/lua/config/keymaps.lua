@@ -7,6 +7,7 @@ util.key_mapper('n', '<space>', 'za')
 vim.g.SimpylFold_docstring_preview=1
 
 -- navigation
+util.key_mapper('n', 'gq', '<cmd>if bufnr("$") == 1|confirm quit|else|bdelete|endif<CR>')
 util.key_mapper('n', 'gF', '<c-w><c-f>')
 util.key_mapper('n', 'gf', util.gotoFilePushTagstack)
 -- util.key_mapper('n', '<c-[>', ':tag<CR>')  -- something wrong about this it makes <Esc> go back in tag stack
@@ -36,6 +37,7 @@ util.key_mapper('n', '<leader>oo', function()
 end)
 util.key_mapper('n', '<leader>O', util.restoreTempSession)
 util.key_mapper('n', '<leader>=', ':wincmd =<CR>')
+util.key_mapper('n', 'fq', ":fc<CR>")
 
 -- Kustomize
 util.key_mapper('n', '<leader>kb', ':!kustomize build %:p:h<CR>')
