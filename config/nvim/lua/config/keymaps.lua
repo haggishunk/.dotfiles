@@ -41,7 +41,7 @@ util.key_mapper('n', '<leader>=', ':wincmd =<CR>')
 util.key_mapper('n', 'fq', ":fc<CR>")
 
 -- Kustomize
-util.key_mapper('n', '<leader>kb', ':!kustomize build %:p:h<CR>')
+util.key_mapper('n', '<leader>kb', ':execute "new | 0read !kustomize build" expand("%:p:h")<CR>')
 
 -- NERDTree
 vim.g.NERDTreeWinSize=35
