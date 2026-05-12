@@ -6,7 +6,7 @@ case $1 in
     *) STOW_ACTION="-S" ;;
 esac
 
-for DOT in tmux git_template editorconfig X11; do
+for DOT in augment tmux git_template editorconfig X11; do
     stow "$STOW_ACTION" -t ~ "$DOT"
 done
 
