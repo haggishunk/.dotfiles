@@ -1,3 +1,4 @@
 font-family = "Hack Nerd Font Mono"
 foreground = "00FF00"
 theme = "the-vapors"
+window-decoration = false
