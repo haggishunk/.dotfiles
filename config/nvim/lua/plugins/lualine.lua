@@ -9,7 +9,7 @@ return {
       options = custom.options,
       sections = custom.sections,
       inactive_sections = custom.inactive_sections,
-      extensions = {'fugitive', 'nerdtree', 'lazy', 'quickfix', 'toggleterm', 'trouble'}
+      extensions = {'fugitive', 'lazy', 'quickfix', 'toggleterm', 'trouble'}
     }
   end,
 }

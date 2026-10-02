@@ -4,14 +4,52 @@ return {
   opts = {
     -- add any options here
   },
+  keys = {
+    { "<leader>nD", "<cmd>NoiceDismiss<cr>", desc = "Dismiss Noice Message" },
+    { "<leader>nT", "<cmd>NoiceTelescope<cr>", desc = "Noice Telescope" },
+    { "<leader>nE", "<cmd>NoiceErrors<cr>", desc = "Noice Errors" },
+  },
   config = function()
+
     require("noice").setup({
       lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        -- override markdown rendering so that **cmp** and other plugins use **treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        },
+      },
+      views = {
+        mini = { timeout = 3000 },
+        notify = { timeout = 5000 },
+      },
+      routes = {
+        {
+          filter = { event = "msg_show", find = "written" },
+          view = "mini",
+          opts = { timeout = 1500 },
+        },
+        {
+          filter = { event = "lsp", kind = "progress" },
+          opts = { skip = true },
+        },
+        {
+          filter = { event = "notify", find = "No information available" },
+          opts = { skip = true },
+        },
+        {
+          filter = { event = "msg_show", min_height = 20 },
+          view = "split",
+        },
+        {
+          filter = {
+            any = {
+              { event = "msg_show", kind = "search_count" },
+              { event = "msg_show", kind = "" },
+            },
+          },
+          view = "mini",
         },
       },
       -- you can enable a preset for easier configuration
@@ -31,6 +69,9 @@ return {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+    {
+      "rcarriga/nvim-notify",
+      opts = { timeout = 3000 },
+    },
   }
 }

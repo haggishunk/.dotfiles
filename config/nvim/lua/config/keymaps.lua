@@ -40,15 +40,6 @@ util.key_mapper('n', 'fq', ":fc<CR>")
 -- Kustomize
 util.key_mapper('n', '<leader>kb', ':execute "new | 0read !kustomize build" expand("%:p:h")<CR>')
 
--- NERDTree
-vim.g.NERDTreeWinSize=35
-vim.g.NERDTreeAutoCenter=1
-vim.cmd([[
-  let NERDTreeIgnore=['\~$', '\.pyc$', '__pycache__$', '.egg-info$']
-]])
-vim.g.NERDTreeDirArrowExpandable=''
-vim.g.NERDTreeDirArrowCollapsible=''
-vim.g.NERDTreeQuitOnOpen=1
 
 -- -- CtrlP
 -- vim.g.ctrlp_cmd = 'CtrlPBuffer'

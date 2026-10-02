@@ -1,5 +1,6 @@
 *.swp
 *.log
+.claude
 go.mod
 go.sum
 **/fish/fish_variables

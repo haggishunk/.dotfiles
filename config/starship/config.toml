@@ -213,7 +213,7 @@ symbol = '☸'
 format = '[]($style)[$symbol]($style inverted)[$context( ╱$namespace╱)]($style)'
 style = 'bold fg:vapor_blue bg:background'
 contexts = [
-    { context_pattern = '.*pr.d.*', style = 'fg:red' },
+    { context_pattern = '(.*prd.*|.*prod.*)', style = 'fg:red' },
     { context_pattern = 'kubernetes-admin@kubernetes', style = 'fg:green', context_alias = 'kubeadm' },
 ]
 
