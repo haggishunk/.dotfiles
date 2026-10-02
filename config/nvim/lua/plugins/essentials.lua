@@ -1,5 +1,5 @@
 return {
-  {"Konfekt/FastFold", enabled = false}, -- causes problems with avante
+  {"Konfekt/FastFold", enabled = false},
   {"NoahTheDuke/vim-just", enabled = true},
   {"andymass/vim-matchup", enabled = true},
   {"antosha417/nvim-lsp-file-operations", enabled = true},
