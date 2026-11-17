@@ -6,16 +6,22 @@ case $1 in
     *) STOW_ACTION="-S" ;;
 esac
 
-for DOT in augment tmux git_template editorconfig X11; do
-    stow "$STOW_ACTION" -t ~ "$DOT"
+for HOME_DIR in git_template editorconfig X11; do
+    stow "$STOW_ACTION" \
+        -t ~ \
+        -d home \
+        "$HOME_DIR"
 done
 
-for CFG_DOT in nvim fish foot ghostty iterm2-config starship yamllint yamlfmt sway tmux; do
-    if test -d ~/.config/$CFG_DOT; then
-        stow "$STOW_ACTION" -t ~/.config/$CFG_DOT/ -d config "$CFG_DOT"
-    else
-        echo "Skipping $CFG_DOT... directory ~/.config/$CFG_DOT does not exist"
+for XDG_DIR in nvim fish foot ghostty iterm2-config starship yamllint yamlfmt sway tmux; do
+    if ! test -d ~/.config/$XDG_DIR; then
+        echo "Creating ~/.config/$XDG_DIR..."
+        mkdir -p ~/.config/$XDG_DIR
     fi
+    stow "$STOW_ACTION" \
+        -t ~/.config/$XDG_DIR/ \
+        -d config \
+        "$XDG_DIR"
 done
 
 stow "$STOW_ACTION" -t ~/.config/fish/functions -d config fish-functions

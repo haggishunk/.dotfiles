@@ -1,0 +1,41 @@
+# Docker Compose for MCP servers using HTTP (streamable-http) transport.
+#
+# Start:   docker compose up -d
+# Stop:    docker compose down
+# Logs:    docker compose logs -f
+#
+# Port assignments:
+#   9101 - grafana-dev     → http://localhost:9101/
+#   9102 - grafana-prod    → http://localhost:9102/
+#
+# No healthcheck: the mcp/grafana image has no shell, wget, or curl.
+
+services:
+
+  grafana-dev:
+    image: mcp/grafana
+    restart: always
+    ports:
+    - "9101:9101"
+    environment:
+      GRAFANA_SERVICE_ACCOUNT_TOKEN: $GRAFANA_TOKEN_DEV
+      GRAFANA_URL: $GRAFANA_URL_NONPROD
+    command:
+    - -t
+    - streamable-http
+    - --address
+    - ":9101"
+
+  grafana-prod:
+    image: mcp/grafana
+    restart: always
+    ports:
+    - "9102:9102"
+    environment:
+      GRAFANA_SERVICE_ACCOUNT_TOKEN: $GRAFANA_TOKEN_PROD_MCP
+      GRAFANA_URL: $GRAFANA_URL_PROD
+    command:
+    - -t
+    - streamable-http
+    - --address
+    - ":9102"
