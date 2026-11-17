@@ -10,7 +10,7 @@ for DOT in augment tmux git_template editorconfig X11; do
     stow "$STOW_ACTION" -t ~ "$DOT"
 done
 
-for CFG_DOT in nvim fish foot ghostty iterm2-config starship yamllint yamlfmt sway; do
+for CFG_DOT in nvim fish foot ghostty iterm2-config starship yamllint yamlfmt sway tmux; do
     if test -d ~/.config/$CFG_DOT; then
         stow "$STOW_ACTION" -t ~/.config/$CFG_DOT/ -d config "$CFG_DOT"
     else
